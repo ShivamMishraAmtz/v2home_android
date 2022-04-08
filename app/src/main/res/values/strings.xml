@@ -1,0 +1,211 @@
+<resources>
+
+    <string name="apiKey">AIzaSyC2nCirkImyebEpofipQiz5v1nfFJhkfPw</string>
+    <string name="testyoutubevideo">_oEA18Y8gM0</string>
+    <string name="tfn">1800 891 3009</string>
+    <string name="temail">o2home@amtz.in</string>
+    <string name="app_name">V2Home</string>
+    <string name="somethingError">Something Error</string>
+    <string name="noInternetConnection">No internet connection</string>
+    <string name="pleaseWait">Please wait</string>
+    <string name="rentAn">Rent An</string>
+    <string name="o2Conecentrator">O2Concentrator</string>
+    <string name="deliveredBy">Delivered By</string>
+    <string name="getStarted">Get Started</string>
+    <string name="o">O</string>
+    <string name="concentrator">Concentrator</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="rememberMe">Remember me</string>
+    <string name="forgotPasswordQ">Forgot Password?</string>
+    <string name="signIn">Sign In</string>
+    <string name="byCreatingAccountAgree">By creating an account you agree to our</string>
+    <string name="dontHaveAccount">Don\'t have an Account?</string>
+    <string name="createNewOne">Create new one</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="termService">Terms of Service</string>
+    <string name="and">and</string>
+    <string name="privacyPolicy">Privacy Policy</string>
+    <string name="signUp">Sign Up</string>
+    <string name="submit">Submit</string>
+    <string name="location">Location</string>
+    <string name="checkAvailability">Check Availability</string>
+    <string name="oxygenConcentrators">Oxygen Concentrators</string>
+    <string name="variant">Variant</string>
+    <string name="liters5Min">5 Litre/min</string>
+    <string name="specification">Specification</string>
+    <string name="singleFlow">Single Flow</string>
+    <string name="easyToCarry">Easy To Carry</string>
+    <string name="lightWeight">Light Weight</string>
+    <string name="userFriendly">User Friendly</string>
+    <string name="noOfDays">No of Days</string>
+    <string name="priceRs">Price (Rs)</string>
+    <string name="gst">GST</string>
+    <string name="uberFees">Uber Fees</string>
+    <string name="getNow">Get Now</string>
+    <string name="pleaseEnterName">Please enter name</string>
+    <string name="pleaseEnterCorrectEmail">Please enter correct email</string>
+    <string name="pleaseEnterMobile">Please enter mobile number</string>
+    <string name="pleaseEnterCorrectMobile">Please enter correct mobile number</string>
+    <string name="passwordMust8Digit">Password must be at least 8 digit</string>
+    <string name="pleaseAcceptTncPrivacy"><![CDATA[Please accept Terms & Condition and privacy policy]]></string>
+    <string name="pressAgainToExit">Press back again to exit</string>
+    <string name="pleaseEnterEmail">Please enter email</string>
+    <string name="pleaseEnterPassword">Please enter password</string>
+    <string name="literMin">Litre/min</string>
+    <string name="profile">Profile</string>
+    <string name="orderList">Order List</string>
+    <string name="paymentHistoryList">Payment History List</string>
+    <string name="revertApplyProcess">Revert Them Apply Process</string>
+    <string name="logout">Logout</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="aboutUs">About Us</string>
+    <string name="faq">Faq</string>
+    <string name="areYouSureLogout">Are you sure you want to logout?</string>
+    <string name="changePassword">Change Password</string>
+    <string name="oldPassword">Old Password</string>
+    <string name="newPassword">New Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="forgotPassword">Forgot Password</string>
+    <string name="pleaseEnterOldPassword">Please enter old password</string>
+    <string name="pleaseEnterNewPassword">Please enter new password</string>
+    <string name="pleaseEnterConfirmPassword">Please enter confirm password</string>
+    <string name="confirmPasswordNotMatch">Confirm password does not match</string>
+    <string name="alternateMobile">Alternate Mobile</string>
+    <string name="address">Address</string>
+    <string name="landmark">Landmark</string>
+    <string name="pincode">Pincode</string>
+    <string name="update">Update</string>
+    <string name="givePermission">Please give permission from settings</string>
+    <string name="upload">Upload</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="updateProfile">Update Profile</string>
+    <string name="pleaseEnterAddress">Please enter Address</string>
+    <string name="pleaseEnterPincode">Please enter pincode</string>
+    <string name="pleaseEnterCorrectPincode">Please enter correct pincode</string>
+
+    <string name="selectCity">Select City</string>
+    <string name="subject">Subject</string>
+    <string name="description">Description</string>
+    <string name="pleaseEnterSubject">Please enter subject</string>
+    <string name="pleaseEnterDescription">Please enter description</string>
+    <string name="ok">OK</string>
+    <string name="availability">Availability</string>
+    <string name="continuee">Continue</string>
+    <string name="selectAddress">Order Delivery Address</string>
+    <string name="share">Share</string>
+    <string name="liter">Litre</string>
+    <string name="days">days</string>
+    <string name="dispatchDate">Dispatch Date</string>
+    <string name="orderDetail">Order Detail</string>
+    <string name="perDayRent">Per Day Rent</string>
+    <string name="perDay">per day</string>
+    <string name="perTDay"> /30 day</string>
+    <string name="totalCharges">Total Charges</string>
+    <string name="price">Price</string>
+    <string name="totalPrice">Total Price</string>
+    <string name="contactDetail">Contact Detail</string>
+    <string name="expiryDate">Expiry Date</string>
+    <string name="revert">Revert</string>
+    <string name="orderId">Order Id</string>
+    <string name="paymentStatus">Payment Status</string>
+    <string name="pending">Pending</string>
+    <string name="confirm">Confrim</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="paymentId">Payment Id</string>
+    <string name="status">Status</string>
+    <string name="remark">Remark</string>
+    <string name="accepted">Accepted</string>
+    <string name="rejected">Rejected</string>
+    <string name="gettingLocation">Getting Location</string>
+    <string name="pleaseEnterLandmark">Please enter landmark</string>
+    <string name="downloadConsentForm">Download Consent Form</string>
+    <string name="uploadConsentForm">Upload Consent Form</string>
+    <string name="aadhaarPanDl">Aadhaar/PAN/Driving License</string>
+    <string name="pleaseEnetrIdNumber">Please enter ID number</string>
+    <string name="agreeConsentForm">I accept and give consent for using oxygen concentrator.</string>
+    <string name="notificationMessage">The order/booking post 3pm, sundays or public holidays, would be attempted  the next day .</string>
+    <string name="paymentFailed">Payment Failed</string>
+    <string name="agree">Agree</string>
+    <string name="pleaseAgreeConsentForm">Please agree consent form</string>
+    <string name="addMoreDaysPlus">+ Add more days</string>
+    <string name="addMoreDays">Add more days</string>
+    <string name="pleaseEnterOtpSentAt">Please enter the OTP sent at you Email Id</string>
+    <string name="otp">OTP</string>
+    <string name="verify">Verify</string>
+    <string name="resend">Resend</string>
+    <string name="pleaseEnterOtp">Please enter OTP</string>
+    <string name="pleaseEnterCorrectOtp">Please enter correct OTP</string>
+    <string name="otpVerification">OTP Verification</string>
+    <string name="exit">Exit</string>
+    <string name="alertMessage">Alert Message</string>
+    <string name="orderStatus">Order Status</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="dispatched">Dispatched</string>
+    <string name="na">N/A</string>
+    <string name="order">Order</string>
+    <string name="closed">Closed</string>
+    <string name="areYouSureWantRevert">Are you sure you want to revert?</string>
+    <string name="noOrderFound">No Order Found</string>
+    <string name="query">Query</string>
+    <string name="complaint">Complaint</string>
+    <string name="youDontHaveOrder">You don\'t have any order</string>
+    <string name="complaintList">Complaint List</string>
+    <string name="solvedDate">Solved Date</string>
+    <string name="compplaintDetail">Complaint Detail</string>
+    <string name="pleaseSelectLiter">Please select litre type</string>
+    <string name="noVariantAvail">No variant available</string>
+    <string name="daysLeft">Days Left</string>
+    <string name="noPaymentHistoryFound">No Payment History Found</string>
+    <string name="noDataFound">No Data Found</string>
+    <string name="shareApp">"This app caters to the need of requesters to deliver O2 concentrator to their respective addresses through a logistic partner. "</string>
+    <string name="cannotLess5">Cannot be booked less than 7 days.</string>
+
+    <string-array name="selectCity">
+        <item>Select City</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string-array name="video_id_array">
+        <item>CqhpNxI8qYw</item>
+        <item>sasCrpgHDy8</item>
+        <item>iJeh3x09Ya8</item>
+        <item>9qWHzj8k-Uo</item>
+        <item>RjiK45wC924</item>
+        <item>RH3zaLO8H4E</item>
+        <item>o14pyzosjvk</item>
+        <item>5SQrpBQne7A</item>
+        <item>5WJ3r67ORxo</item>
+    </string-array>
+
+    <string-array name="video_title_array">
+        <item>Android Security Lock Demo</item>
+        <item>Android Sectioned RecyclerView Demo</item>
+        <item>Android Home Screen Widgets Demo</item>
+        <item>Android Google Maps Introduction Demo</item>
+        <item>Android Lollipop Activity Transitions Demo</item>
+        <item>Android Toolbar Animation Using Design Support Library Demo</item>
+        <item>Android Material Advance Tabs Demo</item>
+        <item>Android Drag and Drop Demo</item>
+        <item>Android Fingerprint Authentication Demo</item>
+    </string-array>
+
+    <string-array name="video_duration_array">
+        <item>02:48</item>
+        <item>00:44</item>
+        <item>01:01</item>
+        <item>01:03</item>
+        <item>00:25</item>
+        <item>00:34</item>
+        <item>00:45</item>
+        <item>00:52</item>
+        <item>00:28</item>
+    </string-array>
+
+    <string name="swasfaqlink">https://www.swaasa.ai/frequently-asked-questions/</string>
+
+</resources>

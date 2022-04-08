@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/app_bg"
+    tools:ignore="SpUsage"
+    tools:context="code.dashboard.rightMenu.complain.ComplaintListActivity"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/inflate_header"/>
+
+    <LinearLayout
+        android:id="@+id/llTabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_below="@+id/header"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/llQuery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvQuery"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/query"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_13sdp"/>
+
+            <View
+                android:id="@+id/viewQuery"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llComplaint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvComplaint"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:text="@string/complaint"
+                android:textColor="@color/textDark"
+                android:textSize="@dimen/_13sdp"/>
+
+            <View
+                android:id="@+id/viewComplaint"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:visibility="invisible"
+                android:background="@color/colorPrimary"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/llTabs"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
+
+    <TextView
+        android:id="@+id/tvNoDataFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/_15sdp"
+        android:visibility="gone"
+        android:textColor="@color/textLight"
+        android:text="@string/noDataFound"
+        tools:ignore="SpUsage" />
+
+
+</RelativeLayout>

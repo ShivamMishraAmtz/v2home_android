@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="SpUsage"
+    android:background="@color/white"
+    tools:context="code.basic.SplashActivity">
+
+
+
+    <ImageView
+        android:id="@+id/iv2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/v2_home_logo"
+        android:padding="@dimen/_30sdp"
+        android:layout_centerHorizontal="true"
+       />
+
+    <ImageView
+        android:id="@+id/iv1"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_55sdp"
+        android:src="@mipmap/amtz_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_25sdp"/>
+
+
+</RelativeLayout>

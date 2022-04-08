@@ -1,0 +1,32 @@
+package code.utils
+
+//Define All AppUrls
+object AppUrls {
+//    const val baseUrl = "http://v2hometest.amtz.in/api/"
+//    const val baseUrlForImage = "http://v2hometest.amtz.in"
+    const val baseUrl = "https://v2home.amtz.in/api/"
+    const val baseUrlForImage = "https://v2home.amtz.in"
+    const val token = baseUrl + "token"
+    const val login = baseUrl + "account-login"
+    const val register_account = baseUrl + "register-account"
+    const val state_list = baseUrl + "state-list"
+    const val district_list = baseUrl + "district-list"
+    const val otp_verify = baseUrl + "otp-verify"
+    const val package_list = baseUrl + "package-list"
+    const val pincode_list = baseUrl + "pincode-list"
+    const val booking_slot_list = baseUrl + "booking-slot-list"
+    const val contact_list = baseUrl + "contact-list"
+    const val change_password = baseUrl + "change-password"
+    const val update_profile = baseUrl + "update-profile"
+    const val place_order = baseUrl + "place-order"
+    const val forgot_password = baseUrl + "forgot-password"
+    const val order_list = baseUrl + "order-list"
+    const val payment_order_list = baseUrl + "payment-order-list"
+    const val peasant_order_list = baseUrl + "peasant-order-list"
+    const val order_status = baseUrl + "order-status"
+    const val register_peasant = baseUrl + "register-peasant"
+    const val peasant_list = baseUrl + "peasant-list"
+    const val payment_status = baseUrl + "payment-status"
+    const val version_control = baseUrl + "version-control"
+    const val get_banners = baseUrl + "get-banners"
+}

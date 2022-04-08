@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/app_bg"
+    tools:context="code.dashboard.rightMenu.payment.PaymentHistoryActivity"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/inflate_header"/>
+
+
+    <LinearLayout
+        android:id="@+id/liStatus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@+id/header"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:weightSum="100">
+
+
+        <Button
+            android:id="@+id/btnRent"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent"
+            android:text="Rent"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+
+            />
+
+
+        <Button
+            android:id="@+id/btnSell"
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="match_parent"
+            android:text="Sell"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSellList"
+        android:layout_below="@+id/liStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvList"
+        android:layout_below="@+id/rvSellList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"/>
+
+    <TextView
+        android:id="@+id/tvNoDataFound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/_15sdp"
+        android:visibility="gone"
+        android:textColor="@color/textLight"
+        android:text="@string/noPaymentHistoryFound"
+        tools:ignore="SpUsage" />
+
+
+</RelativeLayout>

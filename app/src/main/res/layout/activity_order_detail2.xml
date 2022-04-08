@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="SpUsage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_60sdp">
+
+        <LinearLayout
+            android:id="@+id/liMains"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_5sdp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:id="@+id/liTopss"
+                    android:layout_below="@+id/textViewTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewShortDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Name ...."
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                        android:textColor="#989898"
+                        android:textStyle="bold" />
+
+
+
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Order No ..."
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/textDark"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/btnPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/liTopss"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Toatal Amount"
+                    android:textAllCaps="false"
+                    android:textColor="#989898"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/btnMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnPrice"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="#989898"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/btnTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnMobile"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="sans-serif"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="#989898"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/textViewDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btnTime"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="3dp"
+                    android:text="13.3 Inch, 256 GB"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:visibility="gone" />
+
+
+                <TextView
+                    android:id="@+id/textViewUnique"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewDate"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="left"
+                    android:text="Unique No ..."
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="#989898"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/btnStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:minWidth="@dimen/_70sdp"
+            android:padding="@dimen/_5sdp"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12sdp" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btnStatuss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:background="@color/colorPrimary"
+        android:text="Status"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/topMenuBar"
+        style="@style/Widget.MaterialComponents.BottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_gravity="bottom"
+        android:backgroundTint="@color/white"
+        android:theme="@style/AppThemeMaterial"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="8dp"
+        app:fabCradleRoundedCornerRadius="25dp"
+        app:hideOnScroll="true"
+        tools:ignore="BottomAppBar">
+
+        <LinearLayout
+            android:id="@+id/headMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <include
+                android:id="@+id/header"
+                layout="@layout/inflate_header"/>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_5sdp"
+                android:background="@drawable/dottedbar" />
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</RelativeLayout>

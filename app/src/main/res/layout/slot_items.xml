@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/liMain"
+    >
+
+    <TextView
+        android:id="@+id/textViewHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="02/03/2022"
+        android:gravity="left"
+        android:visibility="gone"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/liBlock"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="@dimen/_2sdp"
+        android:background="@drawable/rectangle_radious"
+        android:padding="8dp">
+
+
+
+        <TextView
+            android:textAlignment="center"
+            android:gravity="center"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Numbers"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="normal" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

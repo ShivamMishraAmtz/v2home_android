@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="SpUsage">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/liAll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_70sdp"
+                android:orientation="vertical">
+
+                <SearchView
+                    android:id="@+id/search"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:searchIcon="@null"
+                    android:queryHint="Search Your State"
+                    android:iconifiedByDefault="false">
+
+                    <requestFocus />
+                </SearchView>
+
+                <ListView
+                    android:id="@+id/listview"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_height="@dimen/_500sdp"
+                    android:layout_below="@+id/search" />
+
+                <SearchView
+                    android:id="@+id/searchCity"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:searchIcon="@null"
+                    android:focusable="false"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:queryHint="Search Your City"
+                    android:iconifiedByDefault="false">
+
+                    <requestFocus />
+                </SearchView>
+
+                <ListView
+                    android:id="@+id/listviewCity"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_height="@dimen/_500sdp"
+                    android:layout_below="@+id/searchCity" />
+
+                <EditText
+                    android:id="@+id/searchArea"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginRight="@dimen/_8sdp"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    android:hint="Search Your Pin code"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    >
+
+                    <requestFocus />
+                </EditText>
+
+                <SearchView
+                    android:id="@+id/searchPin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:focusable="false"
+                    android:visibility="gone"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Search Area"
+                    android:searchIcon="@null">
+
+                    <requestFocus />
+                </SearchView>
+
+                <ListView
+                    android:id="@+id/listviewPin"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_height="@dimen/_500sdp"
+                    android:layout_below="@+id/searchCity" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:scrollbars="none" />
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/topMenuBar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_gravity="bottom"
+            android:backgroundTint="@color/white"
+            android:theme="@style/AppThemeMaterial"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="8dp"
+            app:fabCradleRoundedCornerRadius="25dp"
+            app:hideOnScroll="true"
+            tools:ignore="BottomAppBar">
+
+            <LinearLayout
+                android:id="@+id/headMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/inflate_header"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_5sdp"
+                    android:background="@drawable/dottedbar" />
+
+            </LinearLayout>
+
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@drawable/rectangular_border_grey"
+            android:backgroundTint="@color/textLight"
+            android:text="Book Now"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
