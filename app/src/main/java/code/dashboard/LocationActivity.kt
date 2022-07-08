@@ -68,13 +68,9 @@ class LocationActvity : BaseActivity(), ItemListener {
 
         binding.liAll.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
-
                 AppUtils.hideSoftKeyboard(mActivity)
             }
         })
-
-
-
 
         hitStateApi()
     }
@@ -141,10 +137,12 @@ class LocationActvity : BaseActivity(), ItemListener {
             binding.searchCity.setQuery(arraylistCity!![position].animalName, false);
             //binding.searchCity.setInputType(InputType.TYPE_NULL)
             binding.listviewCity.visibility = View.GONE
-            dist_id = arrayListCity.get(position).id
+            for (i in 0..arrayListCity.size - 1) {
+                if (arraylistCity.get(position).animalName == arrayListCity.get(i).state_name) {
+                    dist_id = arrayListCity.get(i).id
+                }
+            }
             AppUtils.hideSoftKeyboard(mActivity)
-
-
         })
 
         binding.searchCity.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -338,7 +336,6 @@ class LocationActvity : BaseActivity(), ItemListener {
             }
         } catch (e: JSONException) {
             e.printStackTrace()
-
             Log.v("jyhtrew", e.message.toString());
         }
     }
@@ -382,7 +379,6 @@ class LocationActvity : BaseActivity(), ItemListener {
                     } catch (e: Exception) {
                     }
                 }
-
                 setCity()
             }
         } catch (e: JSONException) {
@@ -393,7 +389,7 @@ class LocationActvity : BaseActivity(), ItemListener {
 
     fun hitAreaApi(dist_id: String) {
         Log.v("district_id", dist_id)
-        Log.v("pincode", "530031")
+        Log.v("pincode", binding.searchArea.getText().toString())
         Log.v("auth", OSettings.getString("token").toString())
 
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
@@ -453,6 +449,10 @@ class LocationActvity : BaseActivity(), ItemListener {
     }
 
     fun hitSlotApi(area_id: String) {
+
+
+        Log.v("xgfchjb",OSettings.getString("token").toString());
+
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.booking_slot_list)
@@ -503,7 +503,8 @@ class LocationActvity : BaseActivity(), ItemListener {
                             val day_slot_id = result.getJSONObject(j).getString("day_slot_id");
                             val start_time = result.getJSONObject(j).getString("start_time");
                             val end_time = result.getJSONObject(j).getString("end_time");
-                            val total_available = result.getJSONObject(j).getString("total_available");
+                            val total_available =
+                                result.getJSONObject(j).getString("total_available");
                             slotModal.week_id = week_id;
                             slotModal.week_name = weekname;
                             slotModal.day_date = day_date;
@@ -522,15 +523,12 @@ class LocationActvity : BaseActivity(), ItemListener {
                             sectionArray.add(sectionModel);
 
                         Log.v("bgfds", sectionArray.toString());
-
-
                     } catch (e: Exception) {
 
                         Log.v("gbfvds", e.message.toString())
                     }
                 }
 
-                Log.v("wertyui", sectionArray.get(0).items.get(0).week_name.toString())
                 adapters = TodoSectionAdapter(this, sectionArray)
                 binding.recyclerView?.setHasFixedSize(true)
                 binding.recyclerView?.layoutManager = LinearLayoutManager(this)
@@ -562,4 +560,6 @@ class LocationActvity : BaseActivity(), ItemListener {
 
 
     }
+
+
 }

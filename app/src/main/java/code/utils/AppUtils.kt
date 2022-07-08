@@ -59,7 +59,6 @@ object AppUtils {
         return mString
     }
 
-
     fun returnDouble(s: String): Double {
         return if (s.isEmpty()) 0.0 else {
             var amount = 0.0
@@ -71,7 +70,6 @@ object AppUtils {
             amount
         }
     }
-
 
     fun hideSoftKeyboard(activity: Activity?) {
         if (activity != null) {
@@ -209,7 +207,6 @@ object AppUtils {
             val digest = MessageDigest.getInstance(MD5)
             digest.update(str.toByteArray())
             val messageDigest = digest.digest()
-
             // Create Hex String
             val hexString = StringBuilder()
             for (aMessageDigest: Byte in messageDigest) {
@@ -217,7 +214,6 @@ object AppUtils {
                 while (h.length < 2) h = "0$h"
                 hexString.append(h)
             }
-
             //Log.v("md5",hexString.toString());
             return hexString.toString()
         } catch (e: NoSuchAlgorithmException) {
@@ -427,11 +423,13 @@ object AppUtils {
                 var day = dayOfMonth.toString()
                 if (monthOfYear + 1 < 10) month = "0$month"
                 if (dayOfMonth < 10) day = "0$day"
-                editText.setText("$day-$month-$year")
+                //editText.setText("$day-$month-$year")
+
+                editText.setText("$year-$month-$day")
             },
             mYear, mMonth, mDay
         )
-        datePickerDialog.datePicker.maxDate = c.timeInMillis
+        datePickerDialog.datePicker.minDate = c.timeInMillis
         datePickerDialog.show()
     }
 
@@ -588,7 +586,6 @@ object AppUtils {
     fun isEmpty(editText: EditText): Boolean {
         return editText.text.toString().trim { it <= ' ' }.isEmpty()
     }
-
 
     val alphanumericvalue: String
         get() {

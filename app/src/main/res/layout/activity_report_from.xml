@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="code.dashboard.ReportFromActivity">
+
+    <LinearLayout
+        android:id="@+id/liStatus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:weightSum="90">
+
+
+        <Button
+            android:id="@+id/btnFirst"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent"
+            android:text="First"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+
+            />
+
+
+        <Button
+            android:id="@+id/btnSecond"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent"
+            android:text="Second"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+
+        <Button
+            android:id="@+id/btnThird"
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent"
+            android:text="Third"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/liStatus"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/inFirst"
+                layout="@layout/first_report_form"/>
+
+            <include
+                android:id="@+id/inSecond"
+                layout="@layout/second_report_form"/>
+
+            <include
+                android:id="@+id/inThird"
+                layout="@layout/third_report_form"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -42,6 +42,7 @@ class ChangePasswordActivity : BaseActivity() {
         })
 
         binding.header.tvHeader.setText("Change Password")
+
         binding.header.liBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 onBackPressed()
@@ -50,7 +51,6 @@ class ChangePasswordActivity : BaseActivity() {
 
     }
 
-
     private fun validate() {
         if (AppUtils.isEmpty(binding.etOldPassword)) {
             binding.etOldPassword.requestFocus()
@@ -58,14 +58,10 @@ class ChangePasswordActivity : BaseActivity() {
         } else if (AppUtils.isEmpty(binding.etNewPassword)) {
             binding.etNewPassword.requestFocus()
             Toast.makeText(mActivity, "Please Enter Your New Password", Toast.LENGTH_LONG).show()
-        }
-        else if (AppUtils.isEmpty(binding.etConfirmPassword)) {
+        } else if (AppUtils.isEmpty(binding.etConfirmPassword)) {
             binding.etConfirmPassword.requestFocus()
             Toast.makeText(mActivity, "Please Confirm Your New Password", Toast.LENGTH_LONG).show()
-        }
-
-
-        else {
+        } else {
             hitSubmitApi();
         }
     }
@@ -77,8 +73,12 @@ class ChangePasswordActivity : BaseActivity() {
             AndroidNetworking.post(AppUrls.change_password)
                 .addHeaders("auth", OSettings.getString("token"))
                 .addHeaders("Content-Type", "application/json")
-                .addBodyParameter("old_password", binding.etOldPassword.getText().toString().trim { it <= ' ' })
-                .addBodyParameter("new_password", binding.etConfirmPassword.getText().toString().trim { it <= ' ' })
+                .addBodyParameter(
+                    "old_password",
+                    binding.etOldPassword.getText().toString().trim { it <= ' ' })
+                .addBodyParameter(
+                    "new_password",
+                    binding.etConfirmPassword.getText().toString().trim { it <= ' ' })
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
@@ -87,6 +87,7 @@ class ChangePasswordActivity : BaseActivity() {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
+
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("yurwe", anError.message.toString());
@@ -114,7 +115,5 @@ class ChangePasswordActivity : BaseActivity() {
 
         }
     }
-
-
 
 }

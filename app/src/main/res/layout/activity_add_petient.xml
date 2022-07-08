@@ -8,27 +8,21 @@
     tools:context="code.basic.SignUpActivity"
     tools:ignore="SpUsage">
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/_60sdp"
         android:orientation="vertical">
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_20sdp"
-            >
-
+            android:layout_marginTop="@dimen/_20sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
                 <EditText
                     android:id="@+id/etFName"
@@ -54,8 +48,6 @@
                     android:padding="@dimen/_10sdp" />
 
 
-
-
                 <EditText
                     android:id="@+id/etMobile"
                     android:layout_width="match_parent"
@@ -67,6 +59,7 @@
                     android:inputType="number"
                     android:maxLength="10"
                     android:padding="@dimen/_10sdp" />
+
 
                 <Spinner
                     android:id="@+id/spState"
@@ -82,8 +75,7 @@
                     android:layout_height="1dp"
                     android:background="@color/textDark"
                     android:layout_marginStart="@dimen/_33sdp"
-                    android:layout_marginEnd="@dimen/_33sdp"
-                    />
+                    android:layout_marginEnd="@dimen/_33sdp" />
 
 
                 <Spinner
@@ -117,6 +109,7 @@
                     android:maxLength="6"
                     android:padding="@dimen/_10sdp" />
 
+
                 <Button
                     android:id="@+id/btnSignUp"
                     android:layout_width="match_parent"
@@ -130,6 +123,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13sdp" />
+
 
             </LinearLayout>
 

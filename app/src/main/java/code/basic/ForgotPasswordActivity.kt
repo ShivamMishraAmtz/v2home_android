@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import code.dashboard.CaseListActivity
 import code.utils.AppConstants
 import code.utils.AppUrls
 import code.utils.AppUtils
@@ -22,15 +21,12 @@ import org.json.JSONObject
 
 //For ForgotPassword
 class ForgotPasswordActivity : BaseActivity() {
-
     private lateinit var binding: ActivityForgotBinding
-
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityForgotBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.btnSubmit.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 validate();
@@ -61,7 +57,6 @@ class ForgotPasswordActivity : BaseActivity() {
                         Log.v("khjgfdsa", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -78,18 +73,15 @@ class ForgotPasswordActivity : BaseActivity() {
                         .show()
                     startActivity(Intent(mActivity, LoginActivity::class.java))
                 } else {
-                    Toast.makeText(mActivity, response.getString("message"), Toast.LENGTH_LONG).show()
-
+                    Toast.makeText(mActivity, response.getString("message"), Toast.LENGTH_LONG)
+                        .show()
                     Log.v("gfds", response.getString(AppConstants.resCode));
                 }
             }
         } catch (e: JSONException) {
             e.printStackTrace()
-
             Toast.makeText(mActivity, "Credentials is not valid", Toast.LENGTH_LONG).show()
-
             Log.v("gfds", e.message.toString());
-
         }
     }
 

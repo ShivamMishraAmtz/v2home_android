@@ -27,10 +27,8 @@ import org.json.JSONObject
 class ProfileActivity : BaseActivity() {
 
     private lateinit var binding: ActivityProfileBinding
-
     lateinit var arrayListState: ArrayList<StateModal>;
     lateinit var arrayListCity: ArrayList<StateModal>;
-
     var state_id: String = "";
     var district_name: String = "";
 
@@ -43,22 +41,19 @@ class ProfileActivity : BaseActivity() {
         binding.header.tvHeader.setText("Profile")
         updateOnce();
         hitStateApi();
-
         binding.header.ivBack.setOnClickListener {
             onBackPressed()
         }
-
         binding.btnSignUp.setOnClickListener {
             validate();
         }
-
-
         binding.header.tvHeader.setText("My Profile")
         binding.header.liBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 onBackPressed()
             }
         })
+
     }
 
     private fun validate() {
@@ -140,9 +135,7 @@ class ProfileActivity : BaseActivity() {
                 stateModals.state_name = "Select State";
                 arrayListState.add(stateModals)
                 for (i in 0 until jsonArray.length()) {
-
                     try {
-
                         val stateModal = StateModal()
                         val jsonObject1 = jsonArray.getJSONObject(i)
                         val id = jsonObject1.getString("id")
@@ -151,6 +144,7 @@ class ProfileActivity : BaseActivity() {
                         stateModal.state_name = state_name
                         arrayListState.add(stateModal)
                     } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
             }
@@ -243,7 +237,6 @@ class ProfileActivity : BaseActivity() {
             ) {
                 district_name = arrayListCity.get(position).id
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         })
 
@@ -272,7 +265,6 @@ class ProfileActivity : BaseActivity() {
                     "address",
                     binding.etAddress.getText().toString().trim { it <= ' ' })
                 .addBodyParameter("pincode", binding.etPin.getText().toString().trim { it <= ' ' })
-
                 .setPriority(Priority.HIGH)
                 .build()
                 .getAsJSONObject(object : JSONObjectRequestListener {
@@ -281,7 +273,6 @@ class ProfileActivity : BaseActivity() {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("yurwe", anError.message.toString());
@@ -297,19 +288,19 @@ class ProfileActivity : BaseActivity() {
                 Toast.makeText(mActivity, "Profile Updated Successfully!", Toast.LENGTH_LONG).show()
 
 
-                OSettings.putString(AppSettings.first_name,binding.etFName.getText().toString());
+                OSettings.putString(AppSettings.first_name, binding.etFName.getText().toString());
 
-                OSettings.putString(AppSettings.last_name,binding.etLName.getText().toString());
+                OSettings.putString(AppSettings.last_name, binding.etLName.getText().toString());
 
-                OSettings.putString(AppSettings.phone,binding.etMobile.getText().toString());
+                OSettings.putString(AppSettings.phone, binding.etMobile.getText().toString());
 
-                OSettings.putString(AppSettings.address,binding.etAddress.getText().toString());
+                OSettings.putString(AppSettings.address, binding.etAddress.getText().toString());
 
-                OSettings.putString(AppSettings.pincode,binding.etPin.getText().toString());
+                OSettings.putString(AppSettings.pincode, binding.etPin.getText().toString());
 
-                OSettings.putString(AppSettings.stateId,state_id);
+                OSettings.putString(AppSettings.stateId, state_id);
 
-                OSettings.putString(AppSettings.district_id,district_name);
+                OSettings.putString(AppSettings.district_id, district_name);
 
 
                 if (OSettings.getString(AppSettings.user_role) == "user") {

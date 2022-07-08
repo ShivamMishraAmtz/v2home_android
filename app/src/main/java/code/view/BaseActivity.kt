@@ -1,30 +1,15 @@
 package code.view
 
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowInsetsController
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import code.utils.AppConstants
-import code.utils.AppUrls
-import code.utils.AppUtils
 import code.utils.OSettings
 import com.amtz.v2home.R
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.JSONObjectRequestListener
-import org.json.JSONException
-import org.json.JSONObject
 
 open class BaseActivity : AppCompatActivity() {
     protected var mActivity: BaseActivity? = null

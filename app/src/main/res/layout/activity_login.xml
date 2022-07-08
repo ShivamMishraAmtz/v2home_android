@@ -146,8 +146,8 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_30sdp"
             android:background="@drawable/rectangular_border_grey"
-            android:text="@string/signIn"
             android:backgroundTint="@color/colorPrimary"
+            android:text="@string/signIn"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />

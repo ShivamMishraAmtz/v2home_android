@@ -1,5 +1,4 @@
 package code.basic
-
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -31,30 +30,27 @@ import org.json.JSONObject
 class LoginActivity : BaseActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityLoginBinding
-
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.tvCreateNew.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 startActivity(Intent(mActivity, SignUpActivity::class.java))
             }
         })
-
         binding.btnSignIn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 validate();
             }
         })
-
         binding.tvForgotPassword.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 startActivity(Intent(mActivity, ForgotPasswordActivity::class.java))
             }
         })
+
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
@@ -86,19 +82,15 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun validate() {
-
         if (isEmpty(binding.etEmail)) {
             binding.etEmail.requestFocus()
             Toast.makeText(mActivity, "Please Enter Email Address", Toast.LENGTH_LONG).show()
-
         } else if (!isEmailValid(binding.etEmail.getText().toString().trim { it <= ' ' })) {
             binding.etEmail.requestFocus()
             Toast.makeText(mActivity, "Please Enter Valid Email", Toast.LENGTH_LONG).show()
-
         } else if (isEmpty(binding.etPassword)) {
             binding.etPassword.requestFocus()
             Toast.makeText(mActivity, "Please Enter Password", Toast.LENGTH_LONG).show()
-
         } else {
             hitTokenApi();
         }
@@ -118,18 +110,14 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                         hideDialog()
                         Log.v("khjgfdsa", response.toString());
                         if (response.getString("res_code").equals("200")) {
-
                             var json: JSONObject = response.getJSONObject("result");
-
                             var token: String = json.getString("token");
                             OSettings.putString("token", token);
                             hitLoginApi();
                         }
                     }
-
                     override fun onError(anError: ANError) {
                         hideDialog()
-
                         Log.v("khjgfdsa", anError.errorDetail);
                     }
                 })
@@ -137,11 +125,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun hitLoginApi() {
-
-        Log.v("gtrbrfdsa",OSettings.getString("token").toString())
-        Log.v("kljkhgfd",binding.etEmail.getText().toString())
-        Log.v("wertyu",binding.etPassword.getText().toString())
-
+        Log.v("gtrbrfdsa", OSettings.getString("token").toString())
+        Log.v("kljkhgfd", binding.etEmail.getText().toString())
+        Log.v("wertyu", binding.etPassword.getText().toString())
         if (isNetworkAvailable(mActivity!!)) {
             showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.login)
@@ -160,7 +146,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         hideDialog()
                         Log.v("yurwe", anError.message.toString());
@@ -173,6 +158,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         Log.v("dsfdasf", response.toString())
         try {
             val jsonObject = response!!.getJSONObject("result")
+
             if (response.getString(AppConstants.resCode) == "200") {
 
                 var pk: String = jsonObject.getString("pk");
@@ -218,19 +204,19 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     startActivity(Intent(mActivity, CompounderActivity::class.java))
                     finish()
                 }
-
+            } else if (response.getString(AppConstants.resCode) == "202") {
+                OSettings.putString(AppSettings.userId, jsonObject.getString("user_id"));
+                val intent = Intent(mActivity, OtpActivity::class.java)
+                intent.putExtra("email", binding.etEmail.getText().toString().trim { it <= ' ' })
+                startActivity(intent)
+                finishAffinity()
             } else {
-
-                Toast.makeText(mActivity, "Login credentials is not valid", Toast.LENGTH_LONG).show()
-
+                Toast.makeText(mActivity, "Login credentials is not valid", Toast.LENGTH_LONG)
+                    .show()
             }
         } catch (e: JSONException) {
-
             Toast.makeText(mActivity, "Login credentials is not valid", Toast.LENGTH_LONG).show()
-
-
             Log.v("gfdwqs", e.message.toString())
-
             e.printStackTrace()
         }
     }

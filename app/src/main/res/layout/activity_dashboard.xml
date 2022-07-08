@@ -113,6 +113,78 @@
                 </LinearLayout>
 
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/lightFrey" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/ic_user"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvGroupBooking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="start"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Group Booking"
+                        android:textColor="@color/textDark"
+                        android:textSize="@dimen/_15sdp" />
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/lightFrey" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:src="@drawable/ic_user"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_5sdp"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvGroupOrderList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="start"
+                        android:padding="@dimen/_10sdp"
+                        android:text="Group Order List"
+                        android:textColor="@color/textDark"
+                        android:textSize="@dimen/_15sdp" />
+
+                </LinearLayout>
+
+
+
 
                 <View
                     android:layout_width="match_parent"

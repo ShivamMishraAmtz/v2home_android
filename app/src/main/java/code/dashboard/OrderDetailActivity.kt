@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import code.basic.OtpActivity
 import code.utils.AppConstants
 import code.utils.AppUrls
 import code.utils.AppUtils
@@ -52,6 +53,7 @@ class OrderDetailActivity : BaseActivity() {
         binding.header.ivBack.setOnClickListener {
             onBackPressed()
         }
+        updateData()
 
         binding.btnStatuss.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
@@ -59,13 +61,15 @@ class OrderDetailActivity : BaseActivity() {
                     order_status="4";
                     hitUpdateApi(id, "4")
                 } else if (order_status == "4") {
-                    order_status="3";
-                    hitUpdateApi(id, "3")
+//                    order_status="3";
+//                    hitUpdateApi(id, "3")
+                    val intent = Intent(mActivity, ReportFromActivity::class.java)
+                    intent.putExtra("order_number", id)
+                    startActivity(intent)
                 }
+                Log.v("order_number",order_number)
             }
         })
-
-        updateData()
     }
 
     private fun hitUpdateApi(req_id: String, status: String) {
@@ -84,7 +88,6 @@ class OrderDetailActivity : BaseActivity() {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("yurwe", anError.message.toString());

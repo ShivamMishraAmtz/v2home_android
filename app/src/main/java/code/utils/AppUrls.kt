@@ -29,4 +29,11 @@ object AppUrls {
     const val payment_status = baseUrl + "payment-status"
     const val version_control = baseUrl + "version-control"
     const val get_banners = baseUrl + "get-banners"
+    const val group_booking = baseUrl + "group-booking"
+
+    const val report_step_first = baseUrl + "report-step-first"
+    const val report_step_second = baseUrl + "report-step-second"
+    const val report_step_third = baseUrl + "report-step-third"
+    const val form_steps = baseUrl + "form-steps"
+    const val user_view_report = baseUrl + "view-report"
 }

@@ -1,5 +1,4 @@
 package code.dashboard
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -9,6 +8,7 @@ import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
+import code.basic.GroupBookingFormActivity
 import code.basic.LoginActivity
 import code.basic.ViewPagerAdapter
 import code.common.BannerModal
@@ -26,14 +26,13 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
-
 class DashboardActivity : BaseActivity() {
+
     private lateinit var binding: ActivityDashboardBinding
     var images = intArrayOf(
         R.mipmap.slide_image_1,
         R.mipmap.slide_image_2,
-        R.mipmap.slide_image_3
-    );
+        R.mipmap.slide_image_3);
     var myCustomPagerAdapter: ViewPagerAdapter? = null
     var currentPage = 0
     var timer: Timer? = null
@@ -46,7 +45,6 @@ class DashboardActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         getBanners();
 
         binding.main.btnSignIn.setOnClickListener(object : View.OnClickListener {
@@ -70,7 +68,6 @@ class DashboardActivity : BaseActivity() {
             override fun onClick(view: View?) {
                 closeDrawer()
                 startActivity(Intent(mActivity, ChangePasswordActivity::class.java))
-
             }
         })
 
@@ -81,15 +78,14 @@ class DashboardActivity : BaseActivity() {
             }
         })
 
-
         binding.main.bottom.liContact.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 closeDrawer()
                 val browserIntent =
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amtz.in/contact-us/"))
-                startActivity(browserIntent)            }
+                startActivity(browserIntent)
+            }
         })
-
 
         binding.tvUpdateProfile.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
@@ -107,17 +103,28 @@ class DashboardActivity : BaseActivity() {
             }
         })
 
+        binding.tvGroupBooking.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                closeDrawer()
+                startActivity(Intent(mActivity, GroupBookingFormActivity::class.java))
+            }
+        })
 
         binding.tvOrderList.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 closeDrawer()
                 if (OSettings.getString(AppSettings.user_role) == "user") {
-
                     startActivity(Intent(mActivity, OrderListActivity::class.java))
                 } else {
-
                     startActivity(Intent(mActivity, PatientListActivity::class.java))
                 }
+            }
+        })
+
+        binding.tvGroupOrderList.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                closeDrawer()
+                startActivity(Intent(mActivity, GroupOrderListActivity::class.java))
             }
         })
 
@@ -152,7 +159,6 @@ class DashboardActivity : BaseActivity() {
             }
         })
 
-
         binding.tvContactUs.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 val browserIntent =
@@ -161,28 +167,23 @@ class DashboardActivity : BaseActivity() {
             }
         })
 
-
         if (OSettings.getString(AppSettings.user_role) == "user") {
             binding.vPay.visibility = View.VISIBLE
             binding.tvPaymentHistory.visibility = View.VISIBLE
-
             binding.vPatient.visibility = View.GONE
             binding.tvAddPetient.visibility = View.GONE
             binding.tvOrderList.setText("Order List")
         } else {
             binding.vPay.visibility = View.GONE
             binding.tvPaymentHistory.visibility = View.GONE
-
             binding.vPatient.visibility = View.VISIBLE
             binding.tvAddPetient.visibility = View.VISIBLE
-
-            binding.main.viewPager.visibility=View.GONE
-
+            binding.main.viewPager.visibility = View.GONE
             binding.tvOrderList.setText("Patient List")
         }
     }
 
-    private fun bannerCode(arrayListBanner: ArrayList<BannerModal>){
+    private fun bannerCode(arrayListBanner: ArrayList<BannerModal>) {
         try {
             myCustomPagerAdapter = ViewPagerAdapter(this@DashboardActivity, arrayListBanner);
             binding.main.viewPager!!.setAdapter(myCustomPagerAdapter);
@@ -201,12 +202,9 @@ class DashboardActivity : BaseActivity() {
                     handler.post(Update)
                 }
             }, DELAY_MS, PERIOD_MS);
-        }
-        catch (e:Exception)
-        {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     //    //Open DRAWER menu
@@ -223,7 +221,6 @@ class DashboardActivity : BaseActivity() {
         }
     }
 
-
     fun getBanners() {
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
@@ -237,7 +234,6 @@ class DashboardActivity : BaseActivity() {
                         Log.v("hkgfds", response.toString());
                         parseBannerJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -255,23 +251,19 @@ class DashboardActivity : BaseActivity() {
                         val bannerModal = BannerModal()
                         val jsonObject1 = jsonArray.getJSONObject(i)
                         val images = jsonObject1.getString("images")
-                        bannerModal.images=images;
+                        bannerModal.images = images;
                         arrayListBanner.add(bannerModal)
-
-                        Log.v("ArraykiSize",arrayListBanner.size.toString())
-
+                        Log.v("ArraykiSize", arrayListBanner.size.toString())
                     } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
                 bannerCode(arrayListBanner)
             }
         } catch (e: JSONException) {
-
             Log.v("gbfvds", e.message.toString())
-
             e.printStackTrace()
         }
-
     }
 
     fun getPackageApi() {
@@ -284,12 +276,12 @@ class DashboardActivity : BaseActivity() {
                 .getAsJSONObject(object : JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
                         AppUtils.hideDialog()
-                        Log.v("hkgfds", response.toString());
+                        Log.v("packageApi", response.toString());
                         parsePackageJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
+                        Log.v("packageApi", anError.errorBody.toString());
                     }
                 })
         }
@@ -312,7 +304,6 @@ class DashboardActivity : BaseActivity() {
                 OSettings.putString(AppSettings.tax, tax_percentage)
                 OSettings.putString(AppSettings.package_id, category_id)
 
-
                 val jsonArray = jsonObj.getJSONArray("subcategory")
                 for (i in 0 until jsonArray.length()) {
                     try {
@@ -324,24 +315,21 @@ class DashboardActivity : BaseActivity() {
                         val jsonObject1 = jsonArray.getJSONObject(i)
                         val id = jsonObject1.getString("id")
                         val sub_category_name = jsonObject1.getString("sub_category_name")
+                        val sub_category_description = jsonObject1.getString("sub_category_description");
 
                         packageModal.cat_id = category_id;
                         packageModal.cat_name = category_name;
                         packageModal.subcat_id = id;
                         packageModal.subcat_name = sub_category_name;
+                        packageModal.sub_category_description = sub_category_description;
                         arrayListPackage.add(packageModal)
-
                     } catch (e: Exception) {
                     }
                 }
-
                 OSettings.putString(AppSettings.package_name, arrayListPackage[0].cat_name)
                 OSettings.putString(AppSettings.package_amount, package_amount)
-
                 binding.main.catName.setText(arrayListPackage[0].cat_name);
-
                 binding.main.tvPrice.setText(AppConstants.currency + package_amount + "/-");
-
                 binding.main.rvItems.layoutManager = LinearLayoutManager(this)
                 // This will pass the ArrayList to our Adapter
                 val adapter = CustomAdapter(arrayListPackage)
@@ -349,12 +337,9 @@ class DashboardActivity : BaseActivity() {
                 binding.main.rvItems.adapter = adapter
             }
         } catch (e: JSONException) {
-
             Log.v("gbfvds", e.message.toString())
-
             e.printStackTrace()
         }
-
     }
 
 }

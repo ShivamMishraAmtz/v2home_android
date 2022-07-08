@@ -7,4 +7,5 @@ class PackageModal {
     var cat_name = ""
     var subcat_id = ""
     var subcat_name = ""
+    var sub_category_description = ""
 }

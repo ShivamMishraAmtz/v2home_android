@@ -40,6 +40,10 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun jumpApi() {
+
+        Log.v("fvdcsaxZ",OSettings.getString(AppSettings.user_role).toString())
+
+
         if (OSettings.getString(AppSettings.user_role)?.equals("") == true) {
             startActivity(Intent(mActivity, LoginActivity::class.java))
             finish()
@@ -67,7 +71,6 @@ class SplashActivity : BaseActivity() {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         //AppUtils.hideDialog()
                         //jumpApi()

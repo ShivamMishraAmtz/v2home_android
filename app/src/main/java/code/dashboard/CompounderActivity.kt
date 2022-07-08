@@ -43,12 +43,13 @@ class CompounderActivity : BaseActivity() {
 
         binding.main.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                Log.v("onQueryTextSubmit",query.toString())
+                Log.v("onQueryTextSubmit", query.toString())
                 search(query)
                 return true
             }
+
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.v("onQueryTextSubmit",newText.toString())
+                Log.v("onQueryTextSubmit", newText.toString())
                 search(newText)
                 return true
             }
@@ -152,7 +153,8 @@ class CompounderActivity : BaseActivity() {
                 closeDrawer()
                 val browserIntent =
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://www.amtz.in/contact-us/"))
-                startActivity(browserIntent)            }
+                startActivity(browserIntent)
+            }
         })
 
         if (OSettings.getString(AppSettings.user_role) == "user") {
@@ -166,7 +168,6 @@ class CompounderActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         getOrderList()
-
     }
 
     private fun search(text: String?) {
@@ -187,13 +188,9 @@ class CompounderActivity : BaseActivity() {
                 }
                 updateRecyclerView(matchedPeople)
             }
-        }
-        catch (e:Exception)
-        {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
-
-
     }
 
     private fun updateRecyclerView(matchedPeople: ArrayList<OrderModal>) {
@@ -202,7 +199,6 @@ class CompounderActivity : BaseActivity() {
             binding.main.rvList.adapter = adapter
         }
     }
-
 
     //    //Open DRAWER menu
     private fun openDrawer() {
@@ -218,11 +214,8 @@ class CompounderActivity : BaseActivity() {
         }
     }
 
-
     fun getOrderList() {
-
-        Log.v("rgefdasa",OSettings.getString("token").toString())
-
+        Log.v("rgefdasa", AppUtils.currentDate.toString())
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.peasant_order_list)
@@ -237,7 +230,6 @@ class CompounderActivity : BaseActivity() {
                         Log.v("kjlhgfdsa", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -245,13 +237,12 @@ class CompounderActivity : BaseActivity() {
         }
     }
 
-
     private fun parseJson(jsonObjs: JSONObject) {
         try {
             if (jsonObjs.getString(AppConstants.resCode) == "200") {
                 arrayListPackage.clear()
 
-                val jsonResult:JSONObject=jsonObjs.getJSONObject("result");
+                val jsonResult: JSONObject = jsonObjs.getJSONObject("result");
 
                 binding.main.tvCompleted.setText(jsonResult.getString("completed"))
                 binding.main.tvTotal.setText(jsonResult.getString("total"))
@@ -308,19 +299,15 @@ class CompounderActivity : BaseActivity() {
                         Log.v("jhmghnfbdsa", e.message.toString())
                     }
                 }
-                binding.main.tvCountOrder.setText(" ("+arrayListPackage.size.toString()+")")
+                binding.main.tvCountOrder.setText(" (" + arrayListPackage.size.toString() + ")")
                 binding.main.rvList.layoutManager = LinearLayoutManager(mActivity)
                 val adapter = OrderListAdapter(arrayListPackage, mActivity!!)
                 binding.main.rvList.adapter = adapter
-
             }
         } catch (e: JSONException) {
-
             Log.v("gbfvds", e.message.toString())
-
             e.printStackTrace()
         }
-
     }
 
 

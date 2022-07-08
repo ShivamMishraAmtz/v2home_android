@@ -23,16 +23,19 @@ class AddContactActivity : BaseActivity() {
 
     private lateinit var binding: ActivityAddContactBinding
 
-
     @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         binding = ActivityAddContactBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         binding.header.tvHeader.setText("Contact Person")
 
         binding.etName.setText(OSettings.getString(AppSettings.customer_name))
+
         binding.etMobile.setText(OSettings.getString(AppSettings.customer_mobile))
 
         binding.btnSubmit.setOnClickListener(object : View.OnClickListener {
@@ -41,17 +44,30 @@ class AddContactActivity : BaseActivity() {
             }
         })
 
+        binding.rvMain.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                AppUtils.hideSoftKeyboard(mActivity)
+            }
+        })
+
+        binding.liMain.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                AppUtils.hideSoftKeyboard(mActivity)
+            }
+        })
+
         binding.header.liBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 onBackPressed()
             }
         })
+
     }
 
     private fun validate() {
         if (AppUtils.isEmpty(binding.etName)) {
             binding.etName.requestFocus()
-            Toast.makeText(mActivity, "Please Enter  Name", Toast.LENGTH_LONG).show()
+            Toast.makeText(mActivity, "Please Enter Name", Toast.LENGTH_LONG).show()
         } else if (AppUtils.isEmpty(binding.etAge)) {
             binding.etAge.requestFocus()
             Toast.makeText(mActivity, "Please Enter Your Age", Toast.LENGTH_LONG).show()
@@ -66,9 +82,7 @@ class AddContactActivity : BaseActivity() {
         }
     }
 
-
     private fun hitSubmitApi() {
-
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             var data = "";
@@ -83,7 +97,8 @@ class AddContactActivity : BaseActivity() {
                     "customer_name",
                     binding.etName.getText().toString().trim { it <= ' ' })
                 .addBodyParameter(
-                    "customer_user_id", OSettings.getString(AppSettings.customer_id).toString().trim { it <= ' ' })
+                    "customer_user_id",
+                    OSettings.getString(AppSettings.customer_id).toString().trim { it <= ' ' })
                 .addBodyParameter("gender", data)
                 .addBodyParameter("age", binding.etAge.getText().toString().trim { it <= ' ' })
                 .addBodyParameter(
@@ -97,6 +112,7 @@ class AddContactActivity : BaseActivity() {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
+
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("yurwe", anError.message.toString());
@@ -105,28 +121,25 @@ class AddContactActivity : BaseActivity() {
         }
     }
 
-
     private fun parseJson(response: JSONObject?) {
         Log.v("dsfdasf", response.toString())
         try {
             if (response != null) {
-
                 if (response.getString(AppConstants.resCode) == "200") {
-
                     Toast.makeText(mActivity, response.getString("message"), Toast.LENGTH_LONG)
                         .show()
-
                     if (OSettings.getString(AppSettings.user_role) == "user") {
                         startActivity(Intent(mActivity, CaseListActivity::class.java))
                         finish()
                     } else {
                         val jsonObject = response!!.getJSONObject("result")
-                        OSettings.putString(AppSettings.contact_id,jsonObject.getString("contact_user_id"));
+                        OSettings.putString(
+                            AppSettings.contact_id,
+                            jsonObject.getString("contact_user_id")
+                        );
                         startActivity(Intent(mActivity, CheckoutActivity::class.java))
                         finish()
                     }
-
-
                 } else {
                     Log.v("gfds", response.getString(AppConstants.resCode));
                 }
@@ -134,9 +147,6 @@ class AddContactActivity : BaseActivity() {
         } catch (e: JSONException) {
             e.printStackTrace()
             Log.v("gfds", e.message.toString());
-
         }
     }
-
-
 }

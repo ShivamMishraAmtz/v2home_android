@@ -98,7 +98,7 @@ class OrderListActivity : BaseActivity() {
                     }
                 }
                 binding.rvList.layoutManager = LinearLayoutManager(mActivity)
-                val adapter = OrderAdapter(arrayListPackage)
+                val adapter = OrderAdapter(arrayListPackage, mActivity!!)
                 binding.rvList.adapter = adapter
 
             }

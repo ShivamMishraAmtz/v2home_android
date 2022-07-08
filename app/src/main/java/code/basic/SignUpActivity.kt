@@ -26,12 +26,9 @@ import org.json.JSONObject
 
 //SignUp
 class SignUpActivity : BaseActivity(), View.OnClickListener {
-
     private lateinit var binding: ActivitySignUpBinding
-
     lateinit var arrayListState: ArrayList<StateModal>;
     lateinit var arrayListCity: ArrayList<StateModal>;
-
     var state_id: String = "";
     var district_name: String = "";
 
@@ -40,14 +37,10 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         hitStateApi();
-
         binding.btnSignUp.setOnClickListener {
-
             validate();
         }
-
     }
 
     override fun onClick(v: View) {
@@ -97,7 +90,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-
     private fun parseStateJson(jsonObject: JSONObject) {
         arrayListState = ArrayList<StateModal>()
         try {
@@ -108,9 +100,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                 stateModals.state_name = "Select State";
                 arrayListState.add(stateModals)
                 for (i in 0 until jsonArray.length()) {
-
                     try {
-
                         val stateModal = StateModal()
                         val jsonObject1 = jsonArray.getJSONObject(i)
                         val id = jsonObject1.getString("id")
@@ -119,6 +109,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                         stateModal.state_name = state_name
                         arrayListState.add(stateModal)
                     } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
             }
@@ -129,7 +120,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
             this, android.R.layout.simple_spinner_dropdown_item, arrayListState
         )
         binding.spState.setAdapter(adapter)
-        // binding.spState.setSelection(2)
+        //binding.spState.setSelection(2)
         binding.spState.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             @SuppressLint("SetTextI18n")
             override fun onItemSelected(
@@ -147,7 +138,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
-
     fun hitCityApi(state_id: String) {
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
@@ -161,7 +151,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                         Log.v("kjghfdsa", response.toString());
                         parseCityJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -255,7 +244,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.register_account)
-
                 .addBodyParameter(
                     "first_name",
                     binding.etFName.getText().toString().trim { it <= ' ' })
@@ -293,25 +281,23 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
     private fun parseJson(response: JSONObject?) {
         Log.v("dsfdasf", response.toString())
         try {
-            val jsonObject = response!!.getJSONObject("result")
-            if (response.getString(AppConstants.resCode) == "202") {
+            if (response!!.getString(AppConstants.resCode) == "202") {
                 //UnVerified
-                OSettings.putString(AppSettings.userId,jsonObject.getString("user_id"));
+                val jsonObject = response!!.getJSONObject("result")
+
+                OSettings.putString(AppSettings.userId, jsonObject.getString("user_id"));
                 val intent = Intent(mActivity, OtpActivity::class.java)
-                intent.putExtra("email",binding.etEmail.getText().toString().trim { it <= ' ' })
+                intent.putExtra("email", binding.etEmail.getText().toString().trim { it <= ' ' })
                 startActivity(intent)
                 finishAffinity()
             } else {
+                Toast.makeText(mActivity, response.getString("message"), Toast.LENGTH_LONG).show()
 
-                Log.v("gfds",jsonObject.getString(AppConstants.resCode));
+                Log.v("gfds", response.getString(AppConstants.resCode));
             }
         } catch (e: JSONException) {
             e.printStackTrace()
-            Log.v("gfds",e.message.toString());
-
+            Log.v("gfds", e.message.toString());
         }
     }
-
-
-
 }

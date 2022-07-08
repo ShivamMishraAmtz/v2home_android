@@ -76,21 +76,21 @@ class CaseListActivity : BaseActivity() {
                 for (i in 0 until jsonArray.length()) {
                     try {
                         val contactsModal = ContactsModal()
-                        val jsonObj=jsonArray.getJSONObject(i);
+                        val jsonObj = jsonArray.getJSONObject(i);
 
-                        val id=jsonObj.getString("id");
-                        val customer_name=jsonObj.getString("customer_name");
-                        val mobile_number=jsonObj.getString("mobile_number");
-                        val gender=jsonObj.getString("gender");
-                        val age=jsonObj.getString("age");
-                        val create_date=jsonObj.getString("create_date");
+                        val id = jsonObj.getString("id");
+                        val customer_name = jsonObj.getString("customer_name");
+                        val mobile_number = jsonObj.getString("mobile_number");
+                        val gender = jsonObj.getString("gender");
+                        val age = jsonObj.getString("age");
+                        val create_date = jsonObj.getString("create_date");
 
-                        contactsModal.id=id;
-                        contactsModal.customer_name=customer_name;
-                        contactsModal.mobile_number=mobile_number;
-                        contactsModal.gender=gender;
-                        contactsModal.age=age;
-                        contactsModal.create_date=create_date;
+                        contactsModal.id = id;
+                        contactsModal.customer_name = customer_name;
+                        contactsModal.mobile_number = mobile_number;
+                        contactsModal.gender = gender;
+                        contactsModal.age = age;
+                        contactsModal.create_date = create_date;
 
                         arrayListContact.add(contactsModal)
 
@@ -101,10 +101,18 @@ class CaseListActivity : BaseActivity() {
                 binding.rvItems.layoutManager = LinearLayoutManager(this)
                 val adapter = ContactAdapter(arrayListContact, mActivity!!)
                 binding.rvItems.adapter = adapter
+
+
+                Log.v("sddhgsfda", arrayListContact.size.toString())
+
+
+            } else {
+                startActivity(Intent(mActivity, AddContactActivity::class.java))
+                finish()
             }
         } catch (e: JSONException) {
 
-            Log.v("gbfvds",e.message.toString())
+            Log.v("gbfvds", e.message.toString())
 
             e.printStackTrace()
         }

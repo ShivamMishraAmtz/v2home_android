@@ -23,11 +23,8 @@ import org.json.JSONObject
 class CheckoutActivity : BaseActivity(), PaymentResultListener {
 
     lateinit var binding: ActivityCheckoutBinding
-
     private var checkout: Checkout? = null
-
     var paymentId: String = ""
-
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,12 +40,9 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
             binding.liGst.visibility = View.GONE
         }
 
-
         if (OSettings.getString(AppSettings.user_role) != "user") {
             binding.btnSubmit.setText("Confirm")
-        }
-        else
-        {
+        } else {
             binding.btnSubmit.setText("Checkout")
         }
 
@@ -68,8 +62,8 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
             }
         })
 
-
         binding.header.tvHeader.setText("Order Details")
+
         binding.header.liBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 onBackPressed()
@@ -79,16 +73,13 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
     }
 
     private fun hitSubmitApi() {
-        Log.v(
-            "kyjthgf",
-            "\narea_location_id" + OSettings.getString(AppSettings.area_id) +
+        Log.v("kyjthgf", "\narea_location_id" + OSettings.getString(AppSettings.area_id) +
                     "\nday_slot_id" + OSettings.getString(AppSettings.slot_id) +
                     "\ncontact_id" + OSettings.getString(AppSettings.contact_id) +
                     "\npackage_id" + OSettings.getString(AppSettings.package_id) +
                     "\nweek_id" + OSettings.getString(AppSettings.week_id) +
                     "\ncustomer_user_id" + OSettings.getString(AppSettings.customer_id) +
-                    "\ncalendar" + OSettings.getString(AppSettings.booking_date)
-        )
+                    "\ncalendar" + OSettings.getString(AppSettings.booking_date))
         Log.v("hgfds", OSettings.getString(AppSettings.customer_id)!!)
         Log.v("auth", OSettings.getString("token")!!)
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
@@ -111,7 +102,6 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
                         Log.v("yurwe", response.toString());
                         parseJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("yurwe", anError.message.toString());
@@ -120,11 +110,9 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
         }
     }
 
-
     private fun parseJson(jsonObject: JSONObject) {
         try {
             if (jsonObject.getString(AppConstants.resCode) == "200") {
-
                 if (OSettings.getString(AppSettings.user_role) == "user") {
                     val jsonObject = jsonObject.getJSONObject("result")
                     Log.v("gdfvddsa", jsonObject.toString())
@@ -139,11 +127,9 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
                         "Order is placed successfully!",
                         Toast.LENGTH_LONG
                     ).show()
-
                     startActivity(Intent(mActivity, CompounderActivity::class.java))
                     finish()
                 }
-
             } else {
                 Toast.makeText(
                     mActivity,
@@ -157,15 +143,14 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
         }
     }
 
-
     override fun onPaymentSuccess(s: String?) {
+        Log.v("bgrfdsa", s.toString());
         hitUpdatePaymentApi("2", s.toString())
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
         hitUpdatePaymentApi("3", p1.toString())
     }
-
 
     private fun startPayment(totalPrice: Double, key: String, paymentOrderId: String) {
         checkout = Checkout()
@@ -193,8 +178,10 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
         }
     }
 
-
     private fun hitUpdatePaymentApi(status: String, transactionId: String) {
+        Log.v("payment_status", status);
+        Log.v("transaction_id", transactionId);
+        Log.v("payment_id", paymentId);
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.payment_status)
@@ -208,15 +195,14 @@ class CheckoutActivity : BaseActivity(), PaymentResultListener {
                 .getAsJSONObject(object : JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
                         AppUtils.hideDialog()
-                        Log.v("grbgfevds", response.toString())
+                        Log.v("gjhdfsa", response.toString())
                         if (response != null) {
                             parseUpdatePaymentJson(response, status)
                         }
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
-                        Log.v("yurwe", anError.message.toString());
+                        Log.v("gjhdfsa", anError.message.toString());
                     }
                 })
         }
