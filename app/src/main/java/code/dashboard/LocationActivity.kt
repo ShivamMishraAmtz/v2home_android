@@ -1,5 +1,4 @@
 package code.dashboard;
-
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
@@ -27,8 +26,8 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class LocationActvity : BaseActivity(), ItemListener {
-    var adapters: TodoSectionAdapter? = null;
 
+    var adapters: TodoSectionAdapter? = null;
     lateinit var arrayListCity: ArrayList<StateModal>;
     lateinit var binding: ActivityLocationBinding
 
@@ -57,21 +56,17 @@ class LocationActvity : BaseActivity(), ItemListener {
         binding = ActivityLocationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.search.requestFocus()
-
         binding.header.tvHeader.setText("Select Location")
         binding.header.liBack.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 onBackPressed()
             }
         })
-
-
         binding.liAll.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View?) {
                 AppUtils.hideSoftKeyboard(mActivity)
             }
         })
-
         hitStateApi()
     }
 
@@ -90,20 +85,17 @@ class LocationActvity : BaseActivity(), ItemListener {
                 // binding.search.setInputType(InputType.TYPE_NULL)
                 binding.listview.visibility = View.GONE
                 AppUtils.hideSoftKeyboard(mActivity)
-
                 hitCityApi(arrayListState.get(position).id)
             })
             binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false
                 }
-
                 override fun onQueryTextChange(newText: String?): Boolean {
                     val text = newText!!
                     adapter!!.filter(text)
                     if (text.length <= 0) {
                         binding.listview.visibility = View.GONE;
-
                         binding.listviewCity.visibility = View.GONE;
                         binding.searchArea.setText("")
                         binding.searchPin.setQuery("", false)
@@ -112,7 +104,6 @@ class LocationActvity : BaseActivity(), ItemListener {
 //                        adapters!!.notifyDataSetChanged()
                     } else {
                         binding.listview.visibility = View.VISIBLE;
-
                     }
                     return true
                 }
@@ -149,28 +140,22 @@ class LocationActvity : BaseActivity(), ItemListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 val text = newText!!
                 adapterCity!!.filter(text)
                 if (text.length <= 0) {
-
                     binding.listviewCity.visibility = View.GONE;
                     binding.searchArea.setText("")
                     binding.searchPin.setQuery("", false)
                     sectionArray.clear()
-
                     try {
                         arrayListPin.clear()
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
-
 //                    adapters!!.notifyDataSetChanged()
-
                     try {
                         adapterPin!!.notifyDataSetChanged()
-
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -187,7 +172,7 @@ class LocationActvity : BaseActivity(), ItemListener {
             override fun onClick(view: View?) {
                 if (OSettings.getInt(AppSettings.position) == -1) {
                     Toast.makeText(mActivity, "Please Select the slots", Toast.LENGTH_LONG).show()
-                } else {
+                }else {
                     if (OSettings.getString(AppSettings.user_role) == "user") {
                         OSettings.putString(AppSettings.area_id, area_id)
                         startActivity(Intent(mActivity, CaseListActivity::class.java))
@@ -197,24 +182,18 @@ class LocationActvity : BaseActivity(), ItemListener {
                         startActivity(Intent(mActivity, AddContactActivity::class.java))
                         finish()
                     }
-
-                }
+                 }
             }
-        })
+         })
 
         binding.searchArea.addTextChangedListener(object : TextWatcher {
-
             override fun afterTextChanged(s: Editable) {
-
-
             }
-
             override fun beforeTextChanged(
                 s: CharSequence, start: Int,
                 count: Int, after: Int
             ) {
             }
-
             override fun onTextChanged(
                 s: CharSequence, start: Int,
                 before: Int, count: Int
@@ -228,18 +207,11 @@ class LocationActvity : BaseActivity(), ItemListener {
                         hitAreaApi(dist_id);
                     } else {
                         sectionArray.clear()
-
                     }
-
-
                 } catch (ex: Exception) {
-
                 }
-
             }
         })
-
-
     }
 
     fun setArea() {
@@ -261,21 +233,13 @@ class LocationActvity : BaseActivity(), ItemListener {
             binding.searchPin.visibility = View.VISIBLE
             binding.searchArea.visibility = View.GONE
             hitSlotApi(area_id)
-
 //
 //            //binding.searchPin.setInputType(InputType.TYPE_NULL)
-//
-//
-//
-//
-//
-//
         })
         binding.searchPin.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 val text = newText!!
                 adapterPin!!.filter(text)
@@ -305,7 +269,6 @@ class LocationActvity : BaseActivity(), ItemListener {
                         Log.v("hkgfds", response.toString());
                         parseStateJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -354,7 +317,6 @@ class LocationActvity : BaseActivity(), ItemListener {
                         Log.v("kjghfdsa", response.toString());
                         parseCityJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -440,19 +402,15 @@ class LocationActvity : BaseActivity(), ItemListener {
                 setArea()
                 binding.searchPin.visibility = View.GONE
                 binding.searchPin.requestFocus()
-
             }
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-
     }
 
     fun hitSlotApi(area_id: String) {
-
-
         Log.v("xgfchjb",OSettings.getString("token").toString());
-
+        Log.v("area_id",area_id);
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
             AppUtils.showRequestDialog(mActivity!!)
             AndroidNetworking.post(AppUrls.booking_slot_list)
@@ -463,11 +421,9 @@ class LocationActvity : BaseActivity(), ItemListener {
                 .getAsJSONObject(object : JSONObjectRequestListener {
                     override fun onResponse(response: JSONObject) {
                         AppUtils.hideDialog()
-
                         Log.v("mnhgfe", response.toString());
                         parsePackageJson(response);
                     }
-
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                         Log.v("mnhgfe", anError.errorBody);
@@ -481,9 +437,7 @@ class LocationActvity : BaseActivity(), ItemListener {
         try {
             if (jsonObject.getString(AppConstants.resCode) == "200") {
                 val jsonArray = jsonObject.getJSONArray("result")
-
                 binding.recyclerView.visibility = View.VISIBLE
-
                 for (i in 0 until jsonArray.length()) {
                     try {
                         val sectionModel = TodoSectionModel()
@@ -491,13 +445,9 @@ class LocationActvity : BaseActivity(), ItemListener {
                         val weekname = jsonArray.getJSONObject(i).getString("week_name");
                         val day_date = jsonArray.getJSONObject(i).getString("day_date");
                         val week_status = jsonArray.getJSONObject(i).getBoolean("week_status");
-
                         var result = jsonArray.getJSONObject(i).getJSONArray("result");
-
                         Log.v("ytr", result.length().toString())
-
                         var slotArrayList: ArrayList<SlotModal> = ArrayList<SlotModal>()
-
                         for (j in 0..result.length() - 1) {
                             val slotModal = SlotModal()
                             val day_slot_id = result.getJSONObject(j).getString("day_slot_id");
@@ -518,17 +468,14 @@ class LocationActvity : BaseActivity(), ItemListener {
                         sectionModel.date = day_date;
                         sectionModel.weekid = week_id;
                         sectionModel.items = slotArrayList;
-
                         if (result.length() != 0 && week_status)
                             sectionArray.add(sectionModel);
 
                         Log.v("bgfds", sectionArray.toString());
                     } catch (e: Exception) {
-
                         Log.v("gbfvds", e.message.toString())
                     }
                 }
-
                 adapters = TodoSectionAdapter(this, sectionArray)
                 binding.recyclerView?.setHasFixedSize(true)
                 binding.recyclerView?.layoutManager = LinearLayoutManager(this)
@@ -557,9 +504,5 @@ class LocationActvity : BaseActivity(), ItemListener {
     override fun onResume() {
         super.onResume()
         OSettings.putInt(AppSettings.position, -1)
-
-
     }
-
-
 }

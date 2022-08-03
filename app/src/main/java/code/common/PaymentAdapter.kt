@@ -10,10 +10,9 @@ import com.amtz.v2home.R
 import com.kofigyan.stateprogressbar.StateProgressBar
 
 class PaymentAdapter(private val mList: ArrayList<PaymentModal>) :
+
     RecyclerView.Adapter<PaymentAdapter.ViewHolder>() {
-
     var descriptionData = arrayOf("Pending", "Cancelled", "Confirm")
-
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +20,6 @@ class PaymentAdapter(private val mList: ArrayList<PaymentModal>) :
         // that is used to hold list item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_payment_layout, parent, false)
-
         return ViewHolder(view)
     }
 
@@ -40,7 +38,6 @@ class PaymentAdapter(private val mList: ArrayList<PaymentModal>) :
         } else {
             holder.textViewShortDesc.text = "Transaction ID: " + ItemsViewModel.transaction
         }
-
         holder.textViewPaymentOrderId.text = "Payment Order ID: " + ItemsViewModel.payment_order_id
         holder.your_state_progress_bar_id.setStateDescriptionData(descriptionData)
 
@@ -66,7 +63,6 @@ class PaymentAdapter(private val mList: ArrayList<PaymentModal>) :
         val textViewDate: TextView = itemView.findViewById(R.id.textViewDate)
         val btnPrice: TextView = itemView.findViewById(R.id.btnPrice)
         val textViewPaymentOrderId: TextView = itemView.findViewById(R.id.textViewPaymentOrderId)
-
         val your_state_progress_bar_id: StateProgressBar =
             itemView.findViewById(R.id.your_state_progress_bar_id)
         val btnStatus: Button = itemView.findViewById(R.id.btnStatus)

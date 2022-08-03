@@ -151,6 +151,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
                         Log.v("kjghfdsa", response.toString());
                         parseCityJson(response);
                     }
+
                     override fun onError(anError: ANError) {
                         AppUtils.hideDialog()
                     }
@@ -203,7 +204,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
-
     private fun validate() {
         if (AppUtils.isEmpty(binding.etFName)) {
             binding.etFName.requestFocus()
@@ -238,7 +238,6 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
             hitSubmitApi();
         }
     }
-
 
     private fun hitSubmitApi() {
         if (AppUtils.isNetworkAvailable(mActivity!!)) {
